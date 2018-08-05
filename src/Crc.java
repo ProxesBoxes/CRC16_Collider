@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Crc {
 
-  public static int[] table = {
+  private static int[] table = {
       0x0000, 0xC0C1, 0xC181, 0x0140, 0xC301, 0x03C0, 0x0280, 0xC241,
       0xC601, 0x06C0, 0x0780, 0xC741, 0x0500, 0xC5C1, 0xC481, 0x0440,
       0xCC01, 0x0CC0, 0x0D80, 0xCD41, 0x0F00, 0xCFC1, 0xCE81, 0x0E40,
@@ -58,7 +58,7 @@ public class Crc {
         prevId = idToUseForCollision;
       }
 
-      System.out.print("CRC for Collision (\"4f1a\"): ");
+      System.out.print("CRC for Collision (\"1337\"): ");
       crcValueToCollide = scanner.nextLine();
       if(crcValueToCollide.equals("")){
         crcValueToCollide = prevCrc;
@@ -86,7 +86,7 @@ public class Crc {
     } while(another.equalsIgnoreCase("y"));
   }
 
-  public static String getCRC(String idToCollide, int i){
+  private static String getCRC(String idToCollide, int i){
     byte[] bytes = (idToCollide+Integer.toString(i)).getBytes();
     int crc = 0x0000;
     for (byte b : bytes) {
